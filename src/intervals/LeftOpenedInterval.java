@@ -36,6 +36,10 @@ public class LeftOpenedInterval extends Interval {
 		if (getMinimum() == interval.getMaximum()) {
 			return false;
 		}
+		if (getMaximum() == interval.getMinimum()) {
+			return interval.getOpening() == Opening.RIGHT_OPENED ||
+					interval.getOpening() == Opening.UNOPENED;
+		}
 		return this.includes(interval.getMinimum())
 				|| this.includes(interval.getMaximum());
 	}
