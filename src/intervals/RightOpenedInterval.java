@@ -32,4 +32,12 @@ public class RightOpenedInterval extends Interval {
 		}
 	}
 	
+	public boolean intersectsWith(Interval interval) {
+		if (getMaximum() == interval.getMinimum()) {
+			return false;
+		}
+		return this.includes(interval.getMinimum())
+				|| this.includes(interval.getMaximum());
+	}
+	
 }
