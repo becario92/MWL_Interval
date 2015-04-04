@@ -27,6 +27,14 @@ public abstract class Interval {
 	protected void setMaximum(double maximum) {
 		this.maximum = maximum;
 	}
+	
+	protected Opening getOpening() {
+		return opening;
+	}
+
+	protected void setOpening(Opening opening) {
+		this.opening = opening;
+	}
 
 	public double midPoint() {
 		return (maximum + minimum) / 2;
