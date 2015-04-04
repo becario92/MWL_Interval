@@ -31,5 +31,13 @@ public class LeftOpenedInterval extends Interval {
 			return false;
 		}
 	}
+	
+	public boolean intersectsWith(Interval interval) {
+		if (getMinimum() == interval.getMaximum()) {
+			return false;
+		}
+		return this.includes(interval.getMinimum())
+				|| this.includes(interval.getMaximum());
+	}
 
 }
