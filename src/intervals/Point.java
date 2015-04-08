@@ -19,5 +19,9 @@ public class Point {
 	public boolean isLowerThan(double value) {
 		return this.getValue() < value;
 	}
+	
+	public boolean isGreaterThan(double value) {
+		return this.getValue() > value;
+	}
 
 }
