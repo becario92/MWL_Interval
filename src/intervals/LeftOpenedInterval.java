@@ -7,7 +7,7 @@ public class LeftOpenedInterval extends Interval {
 	}
 	
 	public boolean includes(double value) {
-		return this.minimumPoint.isLowerThan(value) && value <= getMaximum();
+		return this.minimumPoint.isLowerThan(value) && this.maximumPoint.isGreaterOrEqualsThan(value);
 	}
 	
 	public boolean includes(Interval interval) {

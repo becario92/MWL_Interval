@@ -7,7 +7,7 @@ public class UnopenedInterval extends Interval {
 	}
 	
 	public boolean includes(double value) {
-		return this.minimumPoint.isLowerOrEqualsThan(value) && value <= getMaximum();
+		return this.minimumPoint.isLowerOrEqualsThan(value) && this.maximumPoint.isGreaterOrEqualsThan(value);
 	}
 	
 	public boolean includes(Interval interval) {
