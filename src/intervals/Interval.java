@@ -5,11 +5,16 @@ public abstract class Interval {
 	private double minimum;
 	private double maximum;
 	private Opening opening;
+	
+	public Point minimumPoint;
+	public Point maximumPoint;
 
 	public Interval(double minimum, double maximum, Opening opening) {
 		this.minimum = minimum;
 		this.maximum = maximum;
 		this.opening = opening;
+		minimumPoint = new Point(minimum);
+		maximumPoint = new Point(maximum);
 	}
 	
 	protected double getMinimum() {
