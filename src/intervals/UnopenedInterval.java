@@ -8,10 +8,6 @@ public class UnopenedInterval extends Interval {
 		maximumPoint = new ClosedPoint(maximum);
 	}
 	
-	public boolean includes(double value) {
-		return this.minimumPoint.isLowerThan(value) && this.maximumPoint.isGreaterThan(value);
-	}
-	
 	public boolean includes(Interval interval) {
 		boolean minimumIncluded = this.includes(interval.getMinimum());
 		boolean maximumIncluded = this.includes(interval.getMaximum());

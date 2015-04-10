@@ -43,7 +43,9 @@ public abstract class Interval {
 		return (maximum + minimum) / 2;
 	}
 
-	public abstract boolean includes(double value);
+	public boolean includes(double value) {
+		return this.minimumPoint.isLowerThan(value) && this.maximumPoint.isGreaterThan(value);
+	}
 
 	public abstract boolean includes(Interval interval);
 
