@@ -1,6 +1,6 @@
 package intervals;
 
-public class Point {
+public abstract class Point {
 	
 	private double value;
 
@@ -16,20 +16,8 @@ public class Point {
 		this.setValue(value);
 	}
 	
-	public boolean isLowerThan(double value) {
-		return this.getValue() < value;
-	}
+	public abstract boolean isLowerThan(double value);
 	
-	public boolean isGreaterThan(double value) {
-		return this.getValue() > value;
-	}
-	
-	public boolean isLowerOrEqualsThan(double value) {
-		return this.getValue() <= value;
-	}
-	
-	public boolean isGreaterOrEqualsThan(double value) {
-		return this.getValue() >= value;
-	}
+	public abstract boolean isGreaterThan(double value);
 
 }

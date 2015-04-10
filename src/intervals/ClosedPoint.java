@@ -7,11 +7,11 @@ public class ClosedPoint extends Point {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public boolean isLowerOrEqualsThan(double value) {
+	public boolean isLowerThan(double value) {
 		return this.getValue() <= value;
 	}
 	
-	public boolean isGreaterOrEqualsThan(double value) {
+	public boolean isGreaterThan(double value) {
 		return this.getValue() >= value;
 	}
 

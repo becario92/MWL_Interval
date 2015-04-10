@@ -13,8 +13,6 @@ public abstract class Interval {
 		this.minimum = minimum;
 		this.maximum = maximum;
 		this.opening = opening;
-		minimumPoint = new Point(minimum);
-		maximumPoint = new Point(maximum);
 	}
 	
 	protected double getMinimum() {

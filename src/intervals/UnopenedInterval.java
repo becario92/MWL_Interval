@@ -4,10 +4,12 @@ public class UnopenedInterval extends Interval {
 
 	public UnopenedInterval(double minimum, double maximum, Opening opening) {
 		super(minimum, maximum, opening);
+		minimumPoint = new ClosedPoint(minimum);
+		maximumPoint = new ClosedPoint(maximum);
 	}
 	
 	public boolean includes(double value) {
-		return this.minimumPoint.isLowerOrEqualsThan(value) && this.maximumPoint.isGreaterOrEqualsThan(value);
+		return this.minimumPoint.isLowerThan(value) && this.maximumPoint.isGreaterThan(value);
 	}
 	
 	public boolean includes(Interval interval) {
