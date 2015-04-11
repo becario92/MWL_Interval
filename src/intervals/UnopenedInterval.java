@@ -2,45 +2,21 @@ package intervals;
 
 public class UnopenedInterval extends Interval {
 
-	public UnopenedInterval(double minimum, double maximum, Opening opening) {
+	public UnopenedInterval(Point minimum, Point maximum, Opening opening) {
 		super(minimum, maximum, opening);
-		minimumPoint = new ClosedPoint(minimum);
-		maximumPoint = new ClosedPoint(maximum);
-	}
-	
-	public boolean includes(Interval interval) {
-		boolean minimumIncluded = this.includes(interval.getMinimum());
-		boolean maximumIncluded = this.includes(interval.getMaximum());
-		switch (interval.getOpening()) {
-		case BOTH_OPENED:
-			return (minimumIncluded || getMinimum() == interval.getMinimum())
-					&& (maximumIncluded || getMaximum() == interval.getMaximum());
-		case LEFT_OPENED:
-			return (minimumIncluded || getMinimum() == interval.getMinimum())
-					&& (maximumIncluded || getMaximum() == interval.getMaximum());
-		case RIGHT_OPENED:
-			return (minimumIncluded || getMinimum() == interval.getMinimum())
-					&& (maximumIncluded || getMaximum() == interval.getMaximum());
-		case UNOPENED:
-			return (minimumIncluded || getMinimum() == interval.getMinimum())
-					&& (maximumIncluded || getMaximum() == interval.getMaximum());
-		default:
-			assert false;
-			return false;
-		}
 	}
 	
 	public boolean intersectsWith(Interval interval) {
-		if (getMinimum() == interval.getMaximum()) {
+		if (getMinimum().getValue() == interval.getMaximum().getValue()) {
 			return interval.getOpening() == Opening.LEFT_OPENED ||
 					interval.getOpening() == Opening.UNOPENED;
 		}
-		if (getMaximum() == interval.getMinimum()) {
+		if (getMaximum().getValue() == interval.getMinimum().getValue()) {
 			return interval.getOpening() == Opening.RIGHT_OPENED ||
 					interval.getOpening() == Opening.UNOPENED;
 		}
-		return this.includes(interval.getMinimum())
-				|| this.includes(interval.getMaximum());
+		return this.includes(interval.getMinimum().getValue())
+				|| this.includes(interval.getMaximum().getValue());
 	}
 
 }

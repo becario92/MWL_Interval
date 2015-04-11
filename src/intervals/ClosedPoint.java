@@ -6,13 +6,41 @@ public class ClosedPoint extends Point {
 		super(value);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public boolean isLowerThan(double value) {
-		return this.getValue() <= value;
+
+	@Override
+	public boolean isLowerThan(Point point) {
+		// TODO Auto-generated method stub
+		return point.isLowerThan(this);
 	}
-	
-	public boolean isGreaterThan(double value) {
-		return this.getValue() >= value;
+
+	@Override
+	public boolean isGreaterThan(Point point) {
+		// TODO Auto-generated method stub
+		return point.isGreaterThan(this);
+	}
+
+	@Override
+	public boolean isLowerThan(ClosedPoint point) {
+		// TODO Auto-generated method stub
+		return this.getValue() >= point.getValue();
+	}
+
+	@Override
+	public boolean isGreaterThan(ClosedPoint point) {
+		// TODO Auto-generated method stub
+		return this.getValue() <= point.getValue();
+	}
+
+	@Override
+	public boolean isLowerThan(OpenedPoint point) {
+		// TODO Auto-generated method stub
+		return this.getValue() > point.getValue();
+	}
+
+	@Override
+	public boolean isGreaterThan(OpenedPoint point) {
+		// TODO Auto-generated method stub
+		return this.getValue() < point.getValue();
 	}
 
 }
