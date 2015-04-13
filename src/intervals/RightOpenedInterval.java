@@ -6,7 +6,7 @@ public class RightOpenedInterval extends Interval {
 		super(minimum, maximum, opening);
 	}
 	
-	public boolean intersectsWith(Interval interval) {
+	public boolean intersectsWithOnLimits(Interval interval) {
 		if (getMinimum().getValue() == interval.getMaximum().getValue()) {
 			return interval.getOpening() == Opening.LEFT_OPENED ||
 					interval.getOpening() == Opening.UNOPENED;
@@ -14,8 +14,7 @@ public class RightOpenedInterval extends Interval {
 		if (getMaximum().getValue() == interval.getMinimum().getValue()) {
 			return false;
 		}
-		return this.includes(interval.getMinimum().getValue())
-				|| this.includes(interval.getMaximum().getValue());
+		return false;
 	}
 	
 }

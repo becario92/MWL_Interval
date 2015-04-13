@@ -49,7 +49,16 @@ public abstract class Interval {
 		return this.minimum.isLowerThan(interval.getMinimum()) && this.maximum.isGreaterThan(interval.getMaximum());
 	}
 
-	public abstract boolean intersectsWith(Interval interval);
+	public boolean intersectsWith(Interval interval) {
+		if (getMinimum().getValue() == interval.getMaximum().getValue()
+				|| getMaximum().getValue() == interval.getMinimum().getValue()) {
+			return intersectsWithOnLimits(interval);
+		}
+		return this.includes(interval.getMinimum().getValue())
+				|| this.includes(interval.getMaximum().getValue());
+	}
+	
+	public abstract boolean intersectsWithOnLimits(Interval interval);
 
 	@Override
 	public String toString() {
