@@ -43,4 +43,10 @@ public class ClosedPoint extends Point {
 		return this.getValue() < point.getValue();
 	}
 
+	@Override
+	public boolean isExactValue() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
 }

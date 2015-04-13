@@ -27,5 +27,7 @@ public abstract class Point {
 	public abstract boolean isLowerThan(OpenedPoint point);
 
 	public abstract boolean isGreaterThan(OpenedPoint point);
+	
+	public abstract boolean isExactValue();
 
 }

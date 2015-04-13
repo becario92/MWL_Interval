@@ -51,32 +51,10 @@ public class Interval {
 
 	public boolean intersectsWith(Interval interval) {
 		if (getMinimum().getValue() == interval.getMaximum().getValue()) {
-			switch(opening) {
-			case RIGHT_OPENED:
-			case UNOPENED:
-				return interval.getOpening() == Opening.LEFT_OPENED ||
-				interval.getOpening() == Opening.UNOPENED;
-			case LEFT_OPENED:
-			case BOTH_OPENED:
-				return false;
-			default:
-				assert false;
-				return false;
-			}
+			return getMinimum().isExactValue() && interval.getMaximum().isExactValue();
 		}
 		if (getMaximum().getValue() == interval.getMinimum().getValue()) {
-			switch(opening) {
-			case LEFT_OPENED:
-			case UNOPENED:
-				return interval.getOpening() == Opening.RIGHT_OPENED ||
-				interval.getOpening() == Opening.UNOPENED;
-			case RIGHT_OPENED:
-			case BOTH_OPENED:
-				return false;
-			default:
-				assert false;
-				return false;
-			}
+			return getMaximum().isExactValue() && interval.getMinimum().isExactValue();
 		}
 		return this.includes(interval.getMinimum().getValue())
 				|| this.includes(interval.getMaximum().getValue());

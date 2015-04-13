@@ -42,5 +42,11 @@ public class OpenedPoint extends Point {
 		// TODO Auto-generated method stub
 		return this.getValue() <= point.getValue();
 	}
+
+	@Override
+	public boolean isExactValue() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }
