@@ -50,15 +50,19 @@ public abstract class Interval {
 	}
 
 	public boolean intersectsWith(Interval interval) {
-		if (getMinimum().getValue() == interval.getMaximum().getValue()
-				|| getMaximum().getValue() == interval.getMinimum().getValue()) {
-			return intersectsWithOnLimits(interval);
+		if (getMinimum().getValue() == interval.getMaximum().getValue()) {
+			return intersectsWithOnLeftLimit(interval);
+		}
+		if (getMaximum().getValue() == interval.getMinimum().getValue()) {
+			return intersectsWithOnRightLimit(interval);
 		}
 		return this.includes(interval.getMinimum().getValue())
 				|| this.includes(interval.getMaximum().getValue());
 	}
 	
-	public abstract boolean intersectsWithOnLimits(Interval interval);
+	public abstract boolean intersectsWithOnLeftLimit(Interval interval);
+	
+	public abstract boolean intersectsWithOnRightLimit(Interval interval);
 
 	@Override
 	public String toString() {

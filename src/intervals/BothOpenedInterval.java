@@ -6,7 +6,11 @@ public class BothOpenedInterval extends Interval {
 		super(minimum, maximum, opening);
 	}
 	
-	public boolean intersectsWithOnLimits(Interval interval) {
+	public boolean intersectsWithOnLeftLimit(Interval interval) {
+		return false;
+	}
+	
+	public boolean intersectsWithOnRightLimit(Interval interval) {
 		return false;
 	}
 

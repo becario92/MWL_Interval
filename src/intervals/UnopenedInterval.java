@@ -6,16 +6,14 @@ public class UnopenedInterval extends Interval {
 		super(minimum, maximum, opening);
 	}
 	
-	public boolean intersectsWithOnLimits(Interval interval) {
-		if (getMinimum().getValue() == interval.getMaximum().getValue()) {
-			return interval.getOpening() == Opening.LEFT_OPENED ||
-					interval.getOpening() == Opening.UNOPENED;
-		}
-		if (getMaximum().getValue() == interval.getMinimum().getValue()) {
-			return interval.getOpening() == Opening.RIGHT_OPENED ||
-					interval.getOpening() == Opening.UNOPENED;
-		}
-		return false;
+	public boolean intersectsWithOnLeftLimit(Interval interval) {
+		return interval.getOpening() == Opening.LEFT_OPENED ||
+				interval.getOpening() == Opening.UNOPENED;
+	}
+	
+	public boolean intersectsWithOnRightLimit(Interval interval) {
+		return interval.getOpening() == Opening.RIGHT_OPENED ||
+				interval.getOpening() == Opening.UNOPENED;
 	}
 
 }
