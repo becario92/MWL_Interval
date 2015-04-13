@@ -1,6 +1,6 @@
 package intervals;
 
-public abstract class Interval {
+public class Interval {
 
 	private Point minimum;
 	private Point maximum;
@@ -51,18 +51,36 @@ public abstract class Interval {
 
 	public boolean intersectsWith(Interval interval) {
 		if (getMinimum().getValue() == interval.getMaximum().getValue()) {
-			return intersectsWithOnLeftLimit(interval);
+			switch(opening) {
+			case RIGHT_OPENED:
+			case UNOPENED:
+				return interval.getOpening() == Opening.LEFT_OPENED ||
+				interval.getOpening() == Opening.UNOPENED;
+			case LEFT_OPENED:
+			case BOTH_OPENED:
+				return false;
+			default:
+				assert false;
+				return false;
+			}
 		}
 		if (getMaximum().getValue() == interval.getMinimum().getValue()) {
-			return intersectsWithOnRightLimit(interval);
+			switch(opening) {
+			case LEFT_OPENED:
+			case UNOPENED:
+				return interval.getOpening() == Opening.RIGHT_OPENED ||
+				interval.getOpening() == Opening.UNOPENED;
+			case RIGHT_OPENED:
+			case BOTH_OPENED:
+				return false;
+			default:
+				assert false;
+				return false;
+			}
 		}
 		return this.includes(interval.getMinimum().getValue())
 				|| this.includes(interval.getMaximum().getValue());
 	}
-	
-	public abstract boolean intersectsWithOnLeftLimit(Interval interval);
-	
-	public abstract boolean intersectsWithOnRightLimit(Interval interval);
 
 	@Override
 	public String toString() {
